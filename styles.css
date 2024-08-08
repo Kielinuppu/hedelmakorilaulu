@@ -1,0 +1,139 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f0f0f0;
+    padding-top: 0;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 1056px;
+    padding: 18px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 13px rgba(0,0,0,0.1);
+    margin-top: 0;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 26px;
+    padding-top: var(--h1-padding-top, 0);
+    padding-bottom: var(--h1-padding-bottom, 0);
+    font-size: clamp(23.8px, 3.6vw, 31.7px);
+    font-weight: 700;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+    position: relative;
+}
+
+.game-board img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.game-board img.faded {
+    opacity: 0.3;
+}
+
+.game-board img.active {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: calc(70vh - 100px);
+    width: auto;
+    height: auto;
+    z-index: 1000;
+}
+
+.kuva9 {
+    grid-column: 2 / 3;
+    grid-row: 3;
+}
+
+.kuva10 {
+    grid-column: 3 / 4;
+    grid-row: 3;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+.stop-button {
+    width: 160px;
+    height: 160px;
+    margin-top: var(--stop-margin-top, 5px);
+    margin-bottom: var(--stop-margin-bottom, 0);
+    cursor: pointer;
+    display: none;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.stop-button.active {
+    position: fixed;
+    top: calc(40% + (70vh - 100px)/2 + 10px);
+    left: 50%;
+    display: block;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 160px;
+    z-index: 1001;
+}
+
+@media (max-width: 880px) {
+    .container {
+        max-width: 95%;
+    }
+    
+    .game-board img {
+        max-width: calc(100% - 10px);
+    }
+}
+
+@media (max-width: 660px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, auto);
+    }
+
+    .kuva9, .kuva10 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .stop-button {
+        width: 130px;
+        height: 130px;
+    }
+}
