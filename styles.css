@@ -1,0 +1,126 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f0f0f0;
+    padding-top: 0;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 924px; /* 880px * 1.05 */
+    padding: 15.75px; /* 15px * 1.05 */
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 10.5px; /* 10px * 1.05 */
+    box-shadow: 0 0 11.55px rgba(0,0,0,0.1); /* 11px * 1.05 */
+    margin-top: 0;
+}
+
+h1 {
+    margin-top: -10px; /* Lisätty negatiivinen margin-top */
+    margin-bottom: 13.1px; /* 23.1px - 10px */
+    font-size: clamp(20.79px, 3.15vw, 27.72px);
+    font-weight: 700;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    gap: -5.25px;
+    justify-items: center;
+    position: relative;
+    margin-top: -10px; /* Lisätty negatiivinen margin-top */
+}
+
+.game-board img {
+    width: 100%;
+    max-width: 210px;
+    height: auto;
+    cursor: pointer;
+    object-fit: contain;
+    border-radius: 10.5px;
+    margin: 5.25px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.game-board img.faded {
+    opacity: 0.3;
+}
+
+.game-board img.active {
+    position: fixed;
+    top: 42%; /* Muutettu 45%:sta 42%:iin */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 70vw;
+    max-height: 60vh;
+    width: auto;
+    height: auto;
+    z-index: 1000;
+}
+
+.kuva9 {
+    grid-column: 2 / 3;
+    grid-row: 3;
+}
+
+.kuva10 {
+    grid-column: 3 / 4;
+    grid-row: 3;
+}
+
+.stop-button {
+    width: 157.5px;
+    height: 157.5px;
+    margin: -20px auto 0; /* Muutettu 0:sta -20px:ään */
+    cursor: pointer;
+    display: block;
+    border-radius: 10.5px;
+    position: relative;
+    z-index: 1001;
+    transition: margin-top 0.3s ease;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+@media (max-width: 924px) { /* 880px * 1.05 */
+    .container {
+        max-width: 95%;
+    }
+    
+    .game-board img {
+        max-width: calc(100% - 10.5px); /* 10px * 1.05 */
+    }
+}
+
+@media (max-width: 693px) { /* 660px * 1.05 */
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 11.55px 7.7px; /* 11px * 1.05, 7.33px * 1.05 */
+    }
+
+    .kuva9, .kuva10 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .stop-button {
+        width: 115.5px; /* 110px * 1.05 */
+        height: 115.5px; /* 110px * 1.05 */
+    }
+}
